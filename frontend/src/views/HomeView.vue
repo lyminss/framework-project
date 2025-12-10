@@ -21,8 +21,8 @@
             </div>
         </section>
 
-        <div class="container py-3">
-            <div class="row g-3">
+        <div class="container py-4">
+            <div class="row g-4">
                 <div class="row">
                     <!-- Header với icon đẹp -->
                     <div class="col-12 mb-4">
@@ -145,7 +145,9 @@
                                 <h5 class="card-title fw-bold mb-0 text-warning">
                                     <i class="bi bi-briefcase me-2"></i>Dự án
                                 </h5>
-                                <a href="#" class="text-decoration-none small">Xem tất cả →</a>
+                                <router-link to="/projects" class="btn btn-sm btn-outline-warning">
+                                    Xem tất cả
+                                </router-link>
                             </div>
 
                             <div v-if="projects.length == 0" class="text-center py-2">
@@ -179,7 +181,8 @@
                                         </div>
 
                                         <!-- Nút xem chi tiết -->
-                                        <a href="#" class="btn btn-outline-primary btn-sm w-100 py-1 small">
+                                        <a href="https://github.com/lyminss/framework-project.git"
+                                            class="btn btn-outline-primary btn-sm w-100 py-1 small">
                                             Chi tiết
                                         </a>
                                     </div>

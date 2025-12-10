@@ -19,6 +19,7 @@ export interface Skill {
 export interface Project {
     _id: string;
     title: string;
+    imageUrl: string;
     description: string
     technologies: string[];
     teamSize: number;
@@ -28,6 +29,7 @@ export interface Project {
 
 export interface Blog {
     _id: string;
+    thumbnail: string;
     title: string;
     content: string;
 }

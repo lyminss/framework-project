@@ -15,12 +15,8 @@
                             <h1 class="display-5 fw-bold mb-3">{{ info.fullName }}</h1>
                             <p class="lead text-secondary mb-4">{{ info.introduction }}</p>
                             <div class="d-flex flex-wrap gap-3">
-                                <button class="btn btn-primary btn-lg px-4">
-                                    <i class="bi bi-download me-2"></i>Tải CV
-                                </button>
-                                <a href="#" class="btn btn-outline-primary btn-lg px-4">
-                                    <i class="bi bi-envelope me-2"></i>Liên hệ
-                                </a>
+                                <RouterLink to="/contact" class="btn btn-outline-primary btn-lg px-4">Liên hệ
+                                </RouterLink>
                             </div>
                         </div>
                     </div>
@@ -118,9 +114,9 @@
                                         <p class="text-muted small mb-0">Dự án và hoạt động chuyên môn</p>
                                     </div>
                                 </div>
-                                <a href="#" class="btn btn-outline-success btn-sm">
-                                    Xem tất cả
-                                </a>
+                                <RouterLink to="/projects" class="btn btn-sm btn-outline-success">
+                                    Xem tất cả dự án
+                                </RouterLink>
                             </div>
                         </div>
                         <div class="card-body">
