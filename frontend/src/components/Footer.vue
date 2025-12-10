@@ -1,12 +1,10 @@
 <template>
     <footer class="footer-section mt-auto">
 
-        <!-- Thông tin liên hệ + Mạng xã hội + Liên kết nhanh + Khám phá -->
         <div class="bg-light py-5 border-top">
             <div class="container">
                 <div class="row g-4 align-items-start">
 
-                    <!-- 1) Thông tin liên hệ -->
                     <div class="col-md-6 col-lg-3">
                         <h6 class="fw-bold text-dark mb-3">
                             <i class="bi bi-person-lines-fill text-primary me-2"></i>Thông tin liên hệ
@@ -33,7 +31,6 @@
                         </div>
                     </div>
 
-                    <!-- 2) 🎯 Liên kết nhanh (Mới thêm) -->
                     <div class="col-md-6 col-lg-3">
                         <h6 class="fw-bold text-dark mb-3">
                             <i class="bi bi-lightning-charge text-warning me-2"></i>Liên kết nhanh
@@ -45,7 +42,6 @@
                         </ul>
                     </div>
 
-                    <!-- 3) 🔍 Khám phá (Mới thêm) -->
                     <div class="col-md-6 col-lg-3">
                         <h6 class="fw-bold text-dark mb-3">
                             <i class="bi bi-compass text-info me-2"></i>Khám phá
@@ -56,7 +52,6 @@
                         </ul>
                     </div>
 
-                    <!-- 4) Mạng xã hội (Giữ nguyên) -->
                     <div class="col-md-6 col-lg-3">
                         <h6 class="fw-bold text-dark mb-3">
                             <i class="bi bi-share-fill text-primary me-2"></i>Mạng xã hội
@@ -90,25 +85,12 @@
             </div>
         </div>
 
-        <!-- Copyright giữ nguyên -->
         <div class="bg-gradient-primary py-3">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
-                        <p class="mb-0 text-white opacity-90">
-                            <i class="bi bi-c-circle me-1"></i>2025 Copyright: My Portfolio
-                        </p>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <div class="d-flex justify-content-center justify-content-md-end gap-3">
-                            <router-link to="/" class="text-white opacity-75 text-decoration-none small">
-                                <i class="bi bi-house-door me-1"></i>Trang chủ
-                            </router-link>
-                            <router-link to="/contact" class="text-white opacity-75 text-decoration-none small">
-                                <i class="bi bi-envelope me-1"></i>Liên hệ
-                            </router-link>
-                        </div>
-                    </div>
+                <div class="align-items-center">
+                    <p class="mb-0 text-white opacity-90 text-center">
+                        <i class="bi bi-c-circle me-1"></i>2025 Copyright: My Portfolio
+                    </p>
                 </div>
             </div>
         </div>

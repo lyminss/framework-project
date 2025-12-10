@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const SkillSchema = new mongoose.Schema({
   name: String,
-  type: { type: String, enum: ["hard", "soft"] }, // Kỹ năng cứng/mềm
-  level: Number, // 1-100%
+  type: { type: String, enum: ["hard", "soft"] },
+  level: Number,
   icon: String,
 });
 

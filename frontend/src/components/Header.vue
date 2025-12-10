@@ -92,7 +92,6 @@ const isActive = (path: string) => {
 </template>
 
 <style scoped>
-/* Tối thiểu CSS - chỉ sử dụng cho những phần không thể thực hiện bằng Bootstrap */
 .bg-gradient-primary {
     background: linear-gradient(135deg, #2c3e50 0%, #1a2530 100%) !important;
 }

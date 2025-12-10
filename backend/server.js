@@ -5,7 +5,6 @@ require("dotenv").config();
 
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
@@ -20,8 +19,6 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
-
-// --- API ROUTES ---
 
 //Personal API
 app.get("/api/personal", async (req, res) => {
@@ -57,11 +54,10 @@ app.get("/api/blogs/:id", async (req, res) => {
   }
 });
 
-//Contact API Gửi mail -- test log
+//test mail
 app.post("/api/contact", (req, res) => {
   const { name, email, message } = req.body;
   console.log(`New Contact from ${name} (${email}): ${message}`);
-  // Ở đây bạn có thể dùng thư viện 'nodemailer' để gửi mail thật
   res.json({ success: true, message: "Đã nhận thông tin liên hệ!" });
 });
 
