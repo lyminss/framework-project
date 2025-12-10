@@ -7,7 +7,6 @@
             <span class="badge bg-primary fs-6">{{ projects.length }} dự án</span>
         </div>
 
-        <!-- GRID LIST -->
         <div class="row g-4">
             <div v-for="p in projects" :key="p._id" class="col-md-6 col-lg-4">
                 <div class="project-card shadow-sm h-100 overflow-hidden">
@@ -54,7 +53,6 @@
             </div>
         </div>
 
-        <!-- Không có dự án -->
         <div v-if="projects.length === 0" class="text-center mt-5">
             <i class="bi bi-inboxes text-muted fs-1"></i>
             <p class="text-muted mt-2">Chưa có dự án nào</p>
@@ -86,7 +84,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* 🎯 Không vỡ ảnh */
     transition: .3s;
 }
 

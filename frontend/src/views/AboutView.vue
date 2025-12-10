@@ -1,6 +1,5 @@
 <template>
     <div v-if="info" class="container-fluid p-0">
-        <!-- Hero Section đơn giản -->
         <section class="about-hero bg-light py-5">
             <div class="container">
                 <div class="row align-items-center">
@@ -24,7 +23,6 @@
             </div>
         </section>
 
-        <!-- Main Content -->
         <div class="container py-5">
             <div class="row g-4">
                 <!-- Thông tin cá nhân -->
@@ -42,9 +40,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <!-- Info List -->
                             <div class="list-group list-group-flush">
-                                <!-- Họ tên -->
                                 <div class="list-group-item border-0 px-0 py-3">
                                     <div class="d-flex align-items-center">
                                         <div class="list-icon bg-primary bg-opacity-10 rounded-circle p-2 me-3">
@@ -57,7 +53,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Email -->
                                 <div class="list-group-item border-0 px-0 py-3">
                                     <div class="d-flex align-items-center">
                                         <div class="list-icon bg-success bg-opacity-10 rounded-circle p-2 me-3">
@@ -70,7 +65,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Phone (nếu có) -->
                                 <div v-if="info.phone" class="list-group-item border-0 px-0 py-3">
                                     <div class="d-flex align-items-center">
                                         <div class="list-icon bg-info bg-opacity-10 rounded-circle p-2 me-3">
@@ -84,7 +78,6 @@
                                 </div>
                             </div>
 
-                            <!-- Introduction -->
                             <div class="mt-4 pt-4 border-top">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="list-icon bg-primary bg-opacity-10 rounded-circle p-2 me-3">
@@ -100,7 +93,6 @@
                     </div>
                 </div>
 
-                <!-- Gallery -->
                 <div class="col-lg-6">
                     <div class="card border-0 shadow-sm h-100">
                         <div class="card-header bg-white border-0 pt-4">
@@ -120,9 +112,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <!-- Grid Gallery -->
                             <div class="row g-3">
-                                <!-- Image 1 -->
                                 <div class="col-md-8">
                                     <div class="gallery-item rounded overflow-hidden">
                                         <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop"
@@ -133,7 +123,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Image 2 -->
                                 <div class="col-md-4">
                                     <div class="gallery-item rounded overflow-hidden">
                                         <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=300&h=500&fit=crop"
@@ -144,7 +133,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Image 3 -->
                                 <div class="col-md-4">
                                     <div class="gallery-item rounded overflow-hidden">
                                         <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?w=300&h=300&fit=crop"
@@ -155,7 +143,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Image 4 -->
                                 <div class="col-md-8">
                                     <div class="gallery-item rounded overflow-hidden">
                                         <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=300&fit=crop"

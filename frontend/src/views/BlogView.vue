@@ -15,18 +15,16 @@ onMounted(async () => {
 <template>
     <div class="container py-5">
 
-        <h2 class="text-center fw-bold display-6 mb-5">📝 Bài viết & Chia sẻ</h2>
+        <h2 class="text-center fw-bold display-6 mb-5">Bài viết & Chia sẻ</h2>
 
         <div class="d-flex flex-column gap-4">
             <div v-for="blog in blogs" :key="blog._id"
                 class="blog-row-card shadow-sm d-flex flex-row align-items-stretch">
 
-                <!-- Ảnh bên trái -->
                 <div class="thumb-box">
                     <img :src="blog.thumbnail" alt="">
                 </div>
 
-                <!-- Nội dung bên phải -->
                 <div class="content flex-grow-1">
                     <h5 class="title">{{ blog.title }}</h5>
                     <p class="desc">{{ blog.content }}</p>

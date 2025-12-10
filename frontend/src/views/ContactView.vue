@@ -2,34 +2,27 @@
 import { ref } from 'vue'
 import emailjs from '@emailjs/browser';
 
-// 1. Tạo biến tham chiếu đến thẻ <form> trong HTML
 const form = ref<HTMLFormElement | null>(null);
 
-// Biến quản lý trạng thái đang gửi
 const isSending = ref(false);
 
-// Dữ liệu form (Dùng để reset sau khi gửi xong)
 const formData = ref({ name: '', email: '', message: '' })
 
 const submitForm = () => {
-    // Kiểm tra form tồn tại
     if (!form.value) return;
 
-    isSending.value = true; // Bật trạng thái đang gửi
+    isSending.value = true;
 
-    // 2. Gửi email qua EmailJS
-    // Cú pháp: sendForm(serviceID, templateID, formElement, publicKey)
     emailjs.sendForm(
-        'service_w1htb6v',  // <-- Thay Service ID của bạn vào đây
-        'template_o6j4ijq', // <-- Thay Template ID của bạn vào đây
+        'service_w1htb6v',
+        'template_o6j4ijq',
         form.value,
         {
-            publicKey: 'qLHZZflm3Neqet95v', // <-- Thay Public Key của bạn vào đây
+            publicKey: 'qLHZZflm3Neqet95v',
         }
     )
         .then(() => {
             alert('Đã gửi thông tin thành công!');
-            // Reset form về rỗng
             formData.value = { name: '', email: '', message: '' };
         })
         .catch((error) => {
@@ -37,7 +30,7 @@ const submitForm = () => {
             alert('Gửi thất bại, vui lòng thử lại sau.');
         })
         .finally(() => {
-            isSending.value = false; // Tắt trạng thái đang gửi dù thành công hay thất bại
+            isSending.value = false;
         });
 }
 </script>
@@ -47,7 +40,6 @@ const submitForm = () => {
 
         <div class="row g-5 align-items-center">
 
-            <!-- LEFT -->
             <div class="col-md-6">
                 <h2 class="fw-bold display-6 mb-3">🤝 Liên hệ hợp tác</h2>
                 <p class="text-muted mb-4 fs-6">
@@ -83,7 +75,6 @@ const submitForm = () => {
                 </div>
             </div>
 
-            <!-- RIGHT -->
             <div class="col-md-6">
                 <div class="p-4 form-card rounded-4 shadow-sm">
                     <h3 class="fw-bold mb-4"><i class="bi bi-chat-left-text me-2"></i>Gửi tin nhắn</h3>
@@ -142,7 +133,6 @@ const submitForm = () => {
     font-size: 1.4rem;
 }
 
-/* Form style đẹp hơn */
 .form-card {
     background: #fff;
 }
@@ -159,7 +149,6 @@ const submitForm = () => {
     box-shadow: 0 0 0 3px rgba(13, 110, 253, .15);
 }
 
-/* Button soft gradient */
 .contact-btn {
     background: linear-gradient(135deg, var(--bs-primary), #4d9fff);
     color: #fff;

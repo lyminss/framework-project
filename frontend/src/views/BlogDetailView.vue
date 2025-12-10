@@ -9,7 +9,6 @@ const blog = ref<Blog | null>(null)
 
 onMounted(async () => {
     const id = route.params.id
-    // Cần bổ sung API getById ở backend
     try {
         const res = await axios.get(`http://localhost:5000/api/blogs/${id}`)
         blog.value = res.data

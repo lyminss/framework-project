@@ -1,7 +1,6 @@
 <template>
     <div v-if="personalInfo" class="container-fluid min-vh-100 bg-light">
 
-        <!-- HERO SECTION -->
         <section class="hero-section bg-gradient-primary text-white pt-4 pb-3">
             <div class="container">
                 <div class="row align-items-center">
@@ -24,7 +23,6 @@
         <div class="container py-4">
             <div class="row g-4">
                 <div class="row">
-                    <!-- Header với icon đẹp -->
                     <div class="col-12 mb-4">
                         <div class="d-flex align-items-center">
                             <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-3">
@@ -37,10 +35,9 @@
                         </div>
                     </div>
 
-                    <!-- Information Grid -->
+                    <!--information-->
                     <div class="col-12">
                         <div class="row g-4">
-                            <!-- Họ tên -->
                             <div class="col-md-6 col-lg-4">
                                 <div class="bg-white rounded p-4 shadow-sm border h-100">
                                     <div class="d-flex align-items-center mb-3">
@@ -66,7 +63,6 @@
                                 </div>
                             </div>
 
-                            <!-- Thông tin bổ sung (nếu có) -->
                             <div v-if="personalInfo.phone" class="col-md-6 col-lg-4">
                                 <div class="bg-white rounded p-4 shadow-sm border h-100">
                                     <div class="d-flex align-items-center mb-3">
@@ -80,7 +76,6 @@
                             </div>
                         </div>
 
-                        <!-- Giới thiệu -->
                         <div class="mt-4">
                             <div class="bg-white rounded p-4 shadow-sm border">
                                 <div class="d-flex align-items-center mb-3">
@@ -96,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- CỘT 1: Học vấn -->
+
                 <div class="col-lg-4">
                     <div class="card border-0 shadow-sm h-100">
                         <div class="card-body">
@@ -112,7 +107,6 @@
                     </div>
                 </div>
 
-                <!-- CỘT 2: Kỹ năng -->
                 <div class="col-lg-4">
                     <div class="card border-0 shadow-sm h-100">
                         <div class="card-body">
@@ -137,7 +131,6 @@
                     </div>
                 </div>
 
-                <!-- CỘT 3: Dự án tiêu biểu - TINH GỌN -->
                 <div class="col-lg-4">
                     <div class="card border-0 shadow-sm h-100">
                         <div class="card-body">
@@ -165,10 +158,8 @@
                                             </span>
                                         </div>
 
-                                        <!-- Mô tả ngắn -->
                                         <p class="small text-muted mb-2 line-clamp-2">{{ proj.description }}</p>
 
-                                        <!-- Công nghệ -->
                                         <div class="d-flex flex-wrap gap-1 mb-2">
                                             <span v-for="tech in proj.technologies.slice(0, 2)" :key="tech"
                                                 class="badge bg-light text-dark border small">
@@ -180,7 +171,6 @@
                                             </span>
                                         </div>
 
-                                        <!-- Nút xem chi tiết -->
                                         <a href="https://github.com/lyminss/framework-project.git"
                                             class="btn btn-outline-primary btn-sm w-100 py-1 small">
                                             Chi tiết
@@ -234,7 +224,6 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-/* Hero Section */
 .hero-section {
     background: linear-gradient(135deg, #2c3e50 0%, #1a2530 100%) !important;
     margin-bottom: 1rem;

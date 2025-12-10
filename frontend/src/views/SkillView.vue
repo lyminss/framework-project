@@ -161,9 +161,6 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-/* Minimal CSS - chỉ dùng Bootstrap classes là chính */
-
-/* Timeline styling */
 .timeline {
     position: relative;
 }
@@ -193,20 +190,17 @@ onMounted(async () => {
     z-index: 1;
 }
 
-/* Progress bar gradient */
 .progress-bar.bg-gradient-primary {
     background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
     border-radius: 4px;
 }
 
-/* Soft skills card hover */
 .bg-light:hover {
     background-color: #f8f9fa !important;
     transform: translateY(-2px);
     transition: all 0.2s ease;
 }
 
-/* Card header icon */
 .icon-wrapper {
     width: 60px;
     height: 60px;
