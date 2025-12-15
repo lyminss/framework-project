@@ -68,7 +68,8 @@
                                 <span class="social-text ms-2">Facebook</span>
                             </a>
 
-                            <a href="#" class="social-link d-flex align-items-center text-decoration-none">
+                            <a href="https://github.com/lyminss/framework-project.git"
+                                class="social-link d-flex align-items-center text-decoration-none">
                                 <div class="social-icon-wrapper rounded-circle p-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
                                         fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">

@@ -123,9 +123,19 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="text-center py-4">
+                        <div class="text-start py-4">
                             <i class="bi bi-briefcase text-muted fs-1 mb-3"></i>
-                            <p class="text-muted">Chưa có thông tin kinh nghiệm</p>
+                            <div class="ms-4">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div v-for="exp in personal.experience" :key="exp.company" class="mb-3">
+                                        <h6 class="">{{ exp.position
+                                        }}</h6>
+                                        <p class="text-muted mb-1">{{ exp.description }}</p>
+                                        <span class="badge bg-warning bg-opacity-10 text-warning border-0">Thời hạn: {{
+                                            exp.duration }}</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

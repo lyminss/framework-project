@@ -35,7 +35,6 @@
                         </div>
                     </div>
 
-                    <!--information-->
                     <div class="col-12">
                         <div class="row g-4">
                             <div class="col-md-6 col-lg-4">
@@ -50,7 +49,6 @@
                                 </div>
                             </div>
 
-                            <!-- Email -->
                             <div class="col-md-6 col-lg-4">
                                 <div class="bg-white rounded p-4 shadow-sm border h-100">
                                     <div class="d-flex align-items-center mb-3">
@@ -85,7 +83,11 @@
                                     <h6 class="fw-bold mb-0 text-warning">Giới thiệu</h6>
                                 </div>
                                 <div class="p-3 bg-light rounded">
-                                    <p class="mb-0">{{ personalInfo.introduction }}</p>
+                                    <div v-for="exp in personalInfo.experience" :key="exp.company" class="mb-3">
+                                        <h6 class="fw-bold mb-1">{{ exp.position }}</h6>
+                                        <p class="text-muted mb-1">{{ exp.description }}</p>
+                                        <span class="bg-light">Thời hạn: {{ exp.duration }}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +187,7 @@
         </div>
     </div>
 
-    <!-- LOADING -->
+    <!-- loading -->
     <div v-else class="min-vh-100 d-flex align-items-center justify-content-center bg-light">
         <div class="text-center">
             <div class="spinner-border text-primary" role="status">

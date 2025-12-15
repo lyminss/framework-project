@@ -92,7 +92,6 @@ onMounted(async () => {
     color: #666;
     line-height: 1.45rem;
     flex-grow: 1;
-    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     display: -webkit-box;
     overflow: hidden;

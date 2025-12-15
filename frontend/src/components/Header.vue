@@ -5,12 +5,12 @@ import { ref, watchEffect } from 'vue'
 const route = useRoute()
 const activeLink = ref('/')
 
-// Theo dõi route hiện tại để cập nhật trạng thái active
+// theo dõi route hiện tại để cập nhật trạng thái active
 watchEffect(() => {
     activeLink.value = route.path
 })
 
-// Hàm kiểm tra xem link có đang active không
+// hàm kiểm tra xem link có đang active không
 const isActive = (path: string) => {
     return activeLink.value === path ||
         (path !== '/' && activeLink.value.startsWith(path))
