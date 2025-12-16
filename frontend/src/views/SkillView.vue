@@ -1,145 +1,64 @@
 <template>
-    <div v-if="personal" class="container-fluid py-4">
-        <div class="row g-4">
-            <!-- LEFT COLUMN - SKILLS -->
+    <div class="container-xl py-5 skills-page">
+        <!-- Header -->
+        <header class="page-header mb-4">
+            <h1 class="page-title mb-2">
+                Kỹ Năng & Kinh Nghiệm
+            </h1>
+            <p class="page-subtitle">
+                Tổng hợp các kỹ năng chuyên môn, kinh nghiệm làm việc và quá trình học tập
+            </p>
+        </header>
+
+        <!-- Loading -->
+        <div v-if="loading" class="loading-state text-center py-5">
+            <div class="spinner-border text-secondary" role="status"></div>
+            <p class="mt-3 text-muted small">Đang tải dữ liệu...</p>
+        </div>
+
+        <!-- Content -->
+        <div v-else-if="personal" class="row g-4">
+            <!-- LEFT -->
             <div class="col-lg-6">
-                <!-- Hard Skills Section -->
-                <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-white border-0 pt-4">
-                        <div class="d-flex align-items-center">
-                            <div class="icon-wrapper bg-primary bg-opacity-10 rounded-circle p-3 me-3">
-                                <i class="bi bi-tools text-primary fs-4"></i>
-                            </div>
-                            <div>
-                                <h3 class="card-title fw-bold mb-1">Kỹ năng chuyên môn</h3>
-                                <p class="text-muted mb-0 small">Hard Skills</p>
-                            </div>
-                        </div>
+                <SkillsCard title="Kỹ Năng Chuyên Môn" subtitle="Hard Skills" type="hard" cardClass="mb-3"
+                    :emptyText="'Chưa có dữ liệu kỹ năng chuyên môn'">
+                    <div v-if="hardSkills.length" class="stack-list">
+                        <SkillProgress v-for="skill in hardSkills" :key="skill._id" :skill="skill" />
                     </div>
-                    <div class="card-body">
-                        <div v-if="hardSkills.length === 0" class="text-center py-4">
-                            <i class="bi bi-inboxes text-muted fs-1 mb-3"></i>
-                            <p class="text-muted">Chưa có dữ liệu kỹ năng</p>
-                        </div>
+                </SkillsCard>
 
-                        <div v-for="skill in hardSkills" :key="skill._id" class="mb-4">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="fw-medium">{{ skill.name }}</span>
-                                <span class="fw-bold text-primary">{{ skill.level }}%</span>
-                            </div>
-                            <div class="progress" style="height: 8px;">
-                                <div class="progress-bar bg-gradient-primary" :style="{ width: skill.level + '%' }"
-                                    role="progressbar" :aria-valuenow="skill.level" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
+                <SkillsCard title="Kỹ Năng Mềm" subtitle="Soft Skills" type="soft"
+                    :emptyText="'Chưa có dữ liệu kỹ năng mềm'">
+                    <div v-if="softSkills.length" class="row g-2">
+                        <SoftSkillItem v-for="skill in softSkills" :key="skill._id" :skill="skill" />
                     </div>
-                </div>
-
-                <!-- Soft Skills Section -->
-                <div class="card border-0 shadow-sm">
-                    <div class="card-header bg-white border-0 pt-4">
-                        <div class="d-flex align-items-center">
-                            <div class="icon-wrapper bg-success bg-opacity-10 rounded-circle p-3 me-3">
-                                <i class="bi bi-people text-success fs-4"></i>
-                            </div>
-                            <div>
-                                <h3 class="card-title fw-bold mb-1">Kỹ năng mềm</h3>
-                                <p class="text-muted mb-0 small">Soft Skills</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div v-if="softSkills.length === 0" class="text-center py-4">
-                            <i class="bi bi-inboxes text-muted fs-1 mb-3"></i>
-                            <p class="text-muted">Chưa có dữ liệu kỹ năng</p>
-                        </div>
-
-                        <div class="row g-2">
-                            <div v-for="skill in softSkills" :key="skill._id" class="col-sm-6 col-md-4">
-                                <div class="border rounded p-3 text-center bg-light">
-                                    <i class="bi bi-check-circle-fill text-success fs-4 mb-2"></i>
-                                    <p class="fw-medium mb-0 small">{{ skill.name }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </SkillsCard>
             </div>
 
-            <!-- RIGHT COLUMN - EDUCATION & EXPERIENCE -->
+            <!-- RIGHT -->
             <div class="col-lg-6">
-                <!-- Education Section -->
-                <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-white border-0 pt-4">
-                        <div class="d-flex align-items-center">
-                            <div class="icon-wrapper bg-warning bg-opacity-10 rounded-circle p-3 me-3">
-                                <i class="bi bi-mortarboard text-warning fs-4"></i>
-                            </div>
-                            <div>
-                                <h3 class="card-title fw-bold mb-1">Học vấn</h3>
-                                <p class="text-muted mb-0 small">Education & Qualifications</p>
-                            </div>
-                        </div>
+                <SkillsCard title="Học Vấn" subtitle="Education" type="education" cardClass="mb-3"
+                    :emptyText="'Chưa có thông tin học vấn'">
+                    <div v-if="personal.education.length" class="timeline clean-timeline">
+                        <EducationItem v-for="(edu, index) in personal.education" :key="index" :education="edu" />
                     </div>
-                    <div class="card-body">
-                        <div v-if="personal.education.length === 0" class="text-center py-4">
-                            <i class="bi bi-mortarboard text-muted fs-1 mb-3"></i>
-                            <p class="text-muted">Chưa có thông tin học vấn</p>
-                        </div>
+                </SkillsCard>
 
-                        <div class="timeline">
-                            <div v-for="(edu, index) in personal.education" :key="index"
-                                class="timeline-item position-relative mb-4">
-                                <div class="timeline-dot bg-warning border border-white"></div>
-                                <div class="ms-4">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <h5 class="fw-bold mb-1">{{ edu.school }}</h5>
-                                        <span class="badge bg-warning bg-opacity-10 text-warning border-0">
-                                            {{ edu.year }}
-                                        </span>
-                                    </div>
-                                    <p class="text-muted mb-2">{{ edu.major }}</p>
-                                    <p class="small text-muted mb-0">
-                                        <i class="bi bi-award me-1"></i>Đang theo học
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                <SkillsCard title="Kinh Nghiệm Làm Việc" subtitle="Experience" type="experience"
+                    :emptyText="'Chưa có thông tin kinh nghiệm làm việc'">
+                    <div v-if="personal.experience.length" class="experience-stack">
+                        <ExperienceItem v-for="(exp, index) in personal.experience" :key="index" :experience="exp"
+                            :isLast="index === personal.experience.length - 1" />
                     </div>
-                </div>
-
-                <!-- Experience Section -->
-                <div class="card border-0 shadow-sm">
-                    <div class="card-header bg-white border-0 pt-4">
-                        <div class="d-flex align-items-center">
-                            <div class="icon-wrapper bg-info bg-opacity-10 rounded-circle p-3 me-3">
-                                <i class="bi bi-briefcase text-info fs-4"></i>
-                            </div>
-                            <div>
-                                <h3 class="card-title fw-bold mb-1">Kinh nghiệm làm việc</h3>
-                                <p class="text-muted mb-0 small">Work Experience</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="text-start py-4">
-                            <i class="bi bi-briefcase text-muted fs-1 mb-3"></i>
-                            <div class="ms-4">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div v-for="exp in personal.experience" :key="exp.company" class="mb-3">
-                                        <h6 class="">{{ exp.position
-                                        }}</h6>
-                                        <p class="text-muted mb-1">{{ exp.description }}</p>
-                                        <span class="badge bg-warning bg-opacity-10 text-warning border-0">Thời hạn: {{
-                                            exp.duration }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </SkillsCard>
             </div>
+        </div>
+
+        <!-- Empty -->
+        <div v-else class="empty-state text-center py-5">
+            <i class="bi bi-person-x fs-1 text-muted mb-3"></i>
+            <h6 class="text-muted">Không tìm thấy thông tin</h6>
+            <p class="text-muted small">Vui lòng thử lại sau</p>
         </div>
     </div>
 </template>
@@ -147,75 +66,106 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
 import axios from 'axios'
+
+// Import components
+import SkillsCard from '../components/SkillsCard.vue'
+import SkillProgress from '../components/SkillProgress.vue'
+import SoftSkillItem from '../components/SoftSkillItem.vue'
+import EducationItem from '../components/EducationItem.vue'
+import ExperienceItem from '../components/ExperienceItem.vue'
+
 import type { Skill, Personal } from '../models/types'
 
 const skills = ref<Skill[]>([])
 const personal = ref<Personal | null>(null)
+const loading = ref(true)
 
-// Tách kỹ năng cứng và mềm
 const hardSkills = computed(() => skills.value.filter(s => s.type === 'hard'))
 const softSkills = computed(() => skills.value.filter(s => s.type === 'soft'))
 
-onMounted(async () => {
+const fetchData = async () => {
+    loading.value = true
+
     try {
         const [resSkill, resPersonal] = await Promise.all([
             axios.get('http://localhost:5000/api/skills'),
             axios.get('http://localhost:5000/api/personal')
         ])
+
         skills.value = resSkill.data
         personal.value = resPersonal.data
-    } catch (error) {
-        console.error("Lỗi tải dữ liệu:", error)
+    } catch (err) {
+        console.error("Lỗi tải dữ liệu:", err)
+    } finally {
+        loading.value = false
     }
+}
+
+onMounted(() => {
+    fetchData()
 })
 </script>
 
 <style scoped>
-.timeline {
-    position: relative;
+.skills-page {
+    background: #f8fafc;
+    min-height: 100vh;
 }
 
-.timeline-item {
-    padding-left: 24px;
+/* Header */
+.page-header {
+    background: linear-gradient(135deg, #ffffff, #f1f5f9);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
 }
 
-.timeline-dot {
-    position: absolute;
-    left: 0;
-    top: 8px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    z-index: 2;
+.text-gradient-primary,
+.text-gradient-info {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.timeline-item:not(:last-child)::before {
-    content: '';
-    position: absolute;
-    left: 5px;
-    top: 20px;
-    bottom: -20px;
-    width: 2px;
-    background-color: #e9ecef;
-    z-index: 1;
+/* Loading */
+.loading-state {
+    animation: fadeIn 0.4s ease;
 }
 
-.progress-bar.bg-gradient-primary {
-    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-    border-radius: 4px;
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
 }
 
-.bg-light:hover {
-    background-color: #f8f9fa !important;
-    transform: translateY(-2px);
-    transition: all 0.2s ease;
+/* Lists */
+.stack-list>*:not(:last-child) {
+    margin-bottom: 1rem;
 }
 
-.icon-wrapper {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.experience-stack>*:not(:last-child) {
+    margin-bottom: 1.25rem;
+}
+
+/* Timeline */
+.modern-timeline {
+    padding-left: 0.5rem;
+}
+
+/* Empty */
+.empty-state {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 </style>
